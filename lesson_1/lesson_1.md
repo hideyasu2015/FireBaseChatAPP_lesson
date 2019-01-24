@@ -45,7 +45,7 @@ REVERSED_CLIENT_ID key
 
 はじめから記載されているsignメソッドに　サインイン時のメソッドを書き加えます。
 
-```
+```swift
   func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error?) {
     if let error = error {
       print("Error \(error)")
@@ -68,14 +68,14 @@ REVERSED_CLIENT_ID key
 ```
 
 何をしているのか見ていきましょう。
-```
+```swift
 guard let authentication = user.authentication else { return}
 ```
 guard節です。条件が偽なら{ }が走ります。
 user.authenticationが存在するなら authentication という変数に代入して下さい
 そうでないなら、ここでおしまい。
 
-```
+```swift
     Auth.auth().signIn(with: credential){ (user, error) in
         if let error = error{
             print(error)
@@ -84,20 +84,23 @@ user.authenticationが存在するなら authentication という変数に代入
     }
 ```
 Authクラスのauth()　インスタンスを作って .signIn プロパティを 
-先程の credential　を引数にしてサインインしてください。
+先程の credential　を引数にしてサインインしてください。  
+<br />
 そこからクロージャーになっていますね。
+<br />
   (user, error) が引数で、in　以下が処理です。
   errorがあったら、errorに代入してログに出力して下さい
   そうでないなら何もしない。
   つまりエラーがなければ、ログインできるということです。
 
+
 ***
 これで、AppDelegateの実装は終わりです。
 次はログイン画面に実装していきます。
 
-#### SignInViewControllerの実装
+## SignInViewControllerの実装
 
-```
+```swift
  var handle: AuthStateDidChangeListenerHandle?
 
   override func viewDidLoad() {
@@ -141,7 +144,7 @@ Constants.Segues.SignInToFp　はただのリテラル（文字）が入って�
 これはARCというメモリ上に使われていないインスタンスを処理する機能により、勝手に呼ばれます。
 しかし認証関係は、通常のインスタンスと違い、大切なので、きちんと記載しておきます。
     
-```
+```swift
   deinit {
         if let handle = handle{
         Auth.auth().removeStateDidChangeListener(handle)
