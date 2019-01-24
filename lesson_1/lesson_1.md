@@ -8,7 +8,7 @@
 ***
 FireBaseの環境構築をしていきます。
 
-####5 info.plistの設定
+#### 5 info.plistの設定
 図5
 
 ```
@@ -29,7 +29,7 @@ REVERSED_CLIENT_ID key
   AppDelegate.swiftに書き加えます。
   アプリ起動時に呼ばれるメソッドです。
 
-```
+```swift
   func application(_ application: UIApplication, didFinishLaunchingWithOptions
     launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
     
@@ -95,7 +95,7 @@ Authクラスのauth()　インスタンスを作って .signIn プロパティ�
 これで、AppDelegateの実装は終わりです。
 次はログイン画面に実装していきます。
 
-####SignInViewControllerの実装
+#### SignInViewControllerの実装
 
 ```
  var handle: AuthStateDidChangeListenerHandle?
@@ -153,5 +153,5 @@ Constants.Segues.SignInToFp　はただのリテラル（文字）が入って�
 initの反対ですね。
 
 ***
-次の章から、はデータベースを作っていきます。
+#### 次の章から、データベースを作っていきます。
 
